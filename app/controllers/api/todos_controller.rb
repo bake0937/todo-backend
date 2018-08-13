@@ -19,6 +19,15 @@ class Api::TodosController < ApplicationController
     render json: "destroy a todo.\n"
   end
 
+  def update
+    @todo = Todo.find(params[:id])
+    if @todo.update(todo_params)
+      render json: "update new todo.\n", status: 200
+    else
+      render json: "fail to update.\n", status: 500
+    end
+  end
+
   private
 
   def todo_params
