@@ -7,7 +7,7 @@ class Api::TodosController < ApplicationController
   def create
     @todo = Todo.new(todo_params)
     if @todo.save
-      render json: "create new todo.\n", status: 200
+      render json: @todo, status: 200
     else
       render json: "fail to create.\n", status: 500
     end
@@ -22,7 +22,7 @@ class Api::TodosController < ApplicationController
   def update
     @todo = Todo.find(params[:id])
     if @todo.update(todo_params)
-      render json: "update new todo.\n", status: 200
+      render json: @todo, status: 200
     else
       render json: "fail to update.\n", status: 500
     end
